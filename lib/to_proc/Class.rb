@@ -1,2 +1,2 @@
 require 'to_proc'
-Class.include ToProc
+Class.include ToProc[:new]

@@ -1,5 +1,7 @@
-module ToProc
-  def to_proc
-    method(:new).to_proc
+ToProc = -> name do
+  Module.new do
+    define_method :to_proc do
+      respond_to?(name) ? method(name).to_proc : super
+    end
   end
 end
