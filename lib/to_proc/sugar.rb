@@ -1,4 +1,6 @@
 require 'to_proc'
 
-Object.include ToProc[:[]]
-Class.include ToProc[:new]
+require 'to_proc/core/Object'
+require 'to_proc/core/Class'
+require 'to_proc/core/Array'
+
