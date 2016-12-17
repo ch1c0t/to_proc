@@ -13,7 +13,8 @@ class Array
         # to become the first or the last argument?
       end
     else
-      super
+      arguments = self
+      -> receiver { receiver.to_proc[*arguments] }
     end
   end
 end
