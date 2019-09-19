@@ -9,12 +9,15 @@ module ToProc
             case
             when self[0].is_a?(Symbol)
               method, argument = self
-              -> receiver { receiver.send method, argument }
+              return -> receiver { receiver.send method, argument }
             when self[1].is_a?(Symbol)
               receiver, method = self
-              -> argument { receiver.send method, argument }
+              return -> argument { receiver.send method, argument }
             end
           end
+
+          arguments = self
+          -> receiver { receiver.to_proc[*arguments] }
         end
       end
     end
